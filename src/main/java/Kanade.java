@@ -41,7 +41,7 @@ public class Kanade {
         System.out.println("_________________________");
         Integer i=0;
         for(i=0;i<numTask;i+=1){
-            System.out.println(i.toString() + ": " + Tasks[i].description);
+            System.out.println(i.toString() + ". " + Tasks[i].description);
         }
         System.out.println("_________________________");
     }
