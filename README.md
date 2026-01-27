@@ -1,4 +1,5 @@
 # Duke project template
+This is the Independent Project component for CS2113 Software Engineering & OOP at the National University of Sinagpore.
 
 This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
 
