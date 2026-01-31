@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Kanade {
     Scanner sc = new Scanner(System.in);
     private Task[] Tasks = new Task[100];
-    private Integer numTask;
+    protected static Integer numTask;
 
     public Kanade() {
         String logo = " _  __                     _      \n"
@@ -18,23 +18,34 @@ public class Kanade {
         numTask = 0;
     }
 
-    public void AddEvent() {
+    public void Chat() {
         String ln = "";
         Integer target;
         while (true) {
             ln = sc.nextLine();
+            String[] words = ln.split(" ");
             if (ln.equals("bye")) {
                 PrintMsg("Bye. Hope to see you again soon!\nまたね！");
                 break;
             } else if (ln.equals("list")) {
                 PrintTasks();
-            } else if (ln.contains("unmark ")) {
+            } else if (words[0].equals("unmark")) {
                 target = Integer.parseInt(ln.replace("unmark ", ""));
                 Tasks[target].setStatus(false);
-            } else if (ln.contains("mark ")) {
+            } else if (words[0].equals("mark")) {
                 target = Integer.parseInt(ln.replace("mark ", ""));
                 Tasks[target].setStatus(true);
-            } else {
+            } else if (words[0].equals("todo")){
+                Tasks[numTask] = new Todo(ln);
+                numTask += 1;
+            } else if (words[0].equals("deadline")){
+                Tasks[numTask] = new Deadline(ln);
+                numTask += 1;
+            } else if(words[0].equals("event")){
+                Tasks[numTask] = new Event(ln);
+                numTask += 1;
+            }
+            else {
                 Tasks[numTask] = new Task(ln);
                 numTask += 1;
                 PrintMsg("added: " + ln);
@@ -47,12 +58,12 @@ public class Kanade {
         System.out.println("_________________________");
         Integer i = 0;
         for (i = 0; i < numTask; i += 1) {
-            System.out.println(i.toString() + ".[" + Tasks[i].getStatusIcon() + "] " + Tasks[i].description);
+            System.out.println(i.toString() + "." + Tasks[i].toString());
         }
         System.out.println("_________________________");
     }
 
-    public void PrintMsg(String input) {
+    public static void PrintMsg(String input) {
         System.out.println("_________________________");
         System.out.println(input);
         System.out.println("_________________________");
@@ -61,7 +72,7 @@ public class Kanade {
     public static void main(String[] args) {
         Kanade k423 = new Kanade();
 
-        k423.AddEvent();
+        k423.Chat();
 
     }
 }
