@@ -1,13 +1,14 @@
 public class Deadline extends Task {
     String by;
-    public Deadline(String ln){
+
+    public Deadline(String ln) {
         super("", "D");
 
         int indexOfBy = ln.indexOf("/by");
-        String desc = ln.substring(9,indexOfBy);
+        String desc = ln.substring(9, indexOfBy);
 
         description = desc;
-        by = ln.substring(indexOfBy+4);
+        by = ln.substring(indexOfBy + 4);
 
         System.out.println("_________________________");
         System.out.println("Got it. I've added this task: " + this);
@@ -15,8 +16,9 @@ public class Deadline extends Task {
         System.out.println("Now you have " + numT.toString() + " task(s) in the list");
         System.out.println("_________________________");
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return super.toString() + "(by: " + by + ")";
     }
 }

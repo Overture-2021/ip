@@ -1,5 +1,5 @@
-public class Todo extends Task{
-    public Todo(String ln){
+public class Todo extends Task {
+    public Todo(String ln) {
         super("", "T");
         this.description = ln.substring(5);
         System.out.println("_________________________");

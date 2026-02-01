@@ -35,17 +35,16 @@ public class Kanade {
             } else if (words[0].equals("mark")) {
                 target = Integer.parseInt(ln.replace("mark ", ""));
                 Tasks[target].setStatus(true);
-            } else if (words[0].equals("todo")){
+            } else if (words[0].equals("todo")) {
                 Tasks[numTask] = new Todo(ln);
                 numTask += 1;
-            } else if (words[0].equals("deadline")){
+            } else if (words[0].equals("deadline")) {
                 Tasks[numTask] = new Deadline(ln);
                 numTask += 1;
-            } else if(words[0].equals("event")){
+            } else if (words[0].equals("event")) {
                 Tasks[numTask] = new Event(ln);
                 numTask += 1;
-            }
-            else {
+            } else {
                 Tasks[numTask] = new Task(ln);
                 numTask += 1;
                 PrintMsg("added: " + ln);

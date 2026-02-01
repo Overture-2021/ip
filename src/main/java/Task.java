@@ -3,19 +3,20 @@ public class Task {
     protected String type;
     protected boolean isDone;
 
-    public Task(){
+    public Task() {
         description = "";
     }
 
     public Task(String description) {
         this.description = description;
         this.isDone = false;
-        type=" ";
+        type = " ";
     }
+
     public Task(String description, String type) {
         this.description = description;
         this.isDone = false;
-        this.type=type;
+        this.type = type;
     }
 
     public void setStatus(boolean newStatus) {
@@ -24,17 +25,17 @@ public class Task {
         if (newStatus) {
             this.isDone = true;
             System.out.println("Nice! I've marked this task as done");
-            System.out.println("[" + type + "]" +"[X] " + description);
+            System.out.println("[" + type + "]" + "[X] " + description);
         } else {
             this.isDone = false;
             System.out.println("OK, I've marked this task as not done yet:");
-            System.out.println("[" + type + "]" +"[ ] " + description);
+            System.out.println("[" + type + "]" + "[ ] " + description);
         }
         System.out.println("_________________________");
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "[" + type + "][" + getStatusIcon() + "] " + description;
     }
 
