@@ -5,9 +5,15 @@ public class Deadline extends Task {
         super("", "D");
 
         int indexOfBy = ln.indexOf("/by");
+
         String desc = ln.substring(9, indexOfBy);
 
+        if(desc.equals("")){
+            throw new IllegalArgumentException();
+        }
+
         description = desc;
+
         by = ln.substring(indexOfBy + 4);
 
         System.out.println("_________________________");
