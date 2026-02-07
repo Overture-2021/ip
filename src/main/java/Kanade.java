@@ -36,18 +36,44 @@ public class Kanade {
                 target = Integer.parseInt(ln.replace("mark ", ""));
                 Tasks[target].setStatus(true);
             } else if (words[0].equals("todo")) {
-                Tasks[numTask] = new Todo(ln);
+                try{
+                    Tasks[numTask] = new Todo(ln);
+                }
+                catch (StringIndexOutOfBoundsException e){
+                    PrintMsg(" (•̀⤙•́ ) The description of a Todo cannot be empty, try again");
+                    continue;
+                }
+
                 numTask += 1;
             } else if (words[0].equals("deadline")) {
-                Tasks[numTask] = new Deadline(ln);
+                try{
+                    Tasks[numTask] = new Deadline(ln);
+                }
+                catch (StringIndexOutOfBoundsException e){
+                    PrintMsg(" ( ._. )\"\"You are missing the /by argument");
+                    continue;
+                }
+                catch (IllegalArgumentException e){
+                    PrintMsg("Description is empty.");
+                    continue;
+                }
                 numTask += 1;
             } else if (words[0].equals("event")) {
-                Tasks[numTask] = new Event(ln);
+                try{
+                    Tasks[numTask] = new Event(ln);
+                }
+                catch (IllegalArgumentException e){
+                    PrintMsg("Description is empty.");
+                    continue;
+                }
+                catch (StringIndexOutOfBoundsException e){
+                    PrintMsg(" ( ._. )\"\"Make sure you have /from and /to arguments");
+                    continue;
+                }
+
                 numTask += 1;
             } else {
-                Tasks[numTask] = new Task(ln);
-                numTask += 1;
-                PrintMsg("added: " + ln);
+                PrintMsg("Sry I didn't understand (\"-ࡇ-)");
             }
 
         }
