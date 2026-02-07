@@ -6,8 +6,6 @@ public class Deadline extends Task {
 
         int indexOfBy = ln.indexOf("/by");
 
-
-
         String desc = ln.substring(9, indexOfBy);
 
         if(desc.equals("")){

@@ -7,6 +7,11 @@ public class Event extends Task {
         int indexOfFrom = ln.indexOf("/from");
         int indexOfTo = ln.indexOf("/to");
         description = ln.substring(6, indexOfFrom);
+
+        if(description.equals("")){
+            throw new IllegalArgumentException();
+        }
+
         from = ln.substring(indexOfFrom + 5, indexOfTo);
         to = ln.substring(indexOfTo + 3);
 
