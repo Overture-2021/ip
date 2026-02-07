@@ -55,10 +55,22 @@ public class Kanade {
                 }
                 catch (IllegalArgumentException e){
                     PrintMsg("Description is empty.");
+                    continue;
                 }
                 numTask += 1;
             } else if (words[0].equals("event")) {
-                Tasks[numTask] = new Event(ln);
+                try{
+                    Tasks[numTask] = new Event(ln);
+                }
+                catch (IllegalArgumentException e){
+                    PrintMsg("Description is empty.");
+                    continue;
+                }
+                catch (StringIndexOutOfBoundsException e){
+                    PrintMsg(" ( ._. )\"\"Make sure you have /from and /to arguments");
+                    continue;
+                }
+
                 numTask += 1;
             } else {
                 PrintMsg("Sry I didn't understand (\"-ࡇ-)");

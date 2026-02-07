@@ -4,7 +4,7 @@ public class Todo extends Task {
 
         this.description = ln.substring(5);
 
-        System.out.println(" (•̀⤙•́ ) The description of a Todo cannot be empty.");
+        //System.out.println(" (•̀⤙•́ ) The description of a Todo cannot be empty.");
 
         System.out.println("_________________________");
         System.out.println("Got it. I've added this task:" + this);
