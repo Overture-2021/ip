@@ -40,9 +40,9 @@ public class Kanade {
                 target = Integer.parseInt(ln.replace("mark ", ""));
                 Tasks.get(target).setStatus(true);
                 FileManager.saveTasks(Tasks);
-            } else if (words[0].equals("delete")){
+            } else if (words[0].equals("delete")) {
                 target = Integer.parseInt(ln.replace("delete ", ""));
-                if(target >= Tasks.size()){
+                if (target >= Tasks.size()) {
                     PrintMsg("Index out of bounds, please reenter.");
                     continue;
                 }
@@ -52,10 +52,9 @@ public class Kanade {
                 FileManager.saveTasks(Tasks);
 
             } else if (words[0].equals("todo")) {
-                try{
+                try {
                     Tasks.add(new Todo(ln));
-                }
-                catch (StringIndexOutOfBoundsException e){
+                } catch (StringIndexOutOfBoundsException e) {
                     PrintMsg(" (•̀⤙•́ ) The description of a Todo cannot be empty, try again");
                     continue;
                 }
@@ -63,28 +62,24 @@ public class Kanade {
                 numTask += 1;
                 FileManager.saveTasks(Tasks);
             } else if (words[0].equals("deadline")) {
-                try{
+                try {
                     Tasks.add(new Deadline(ln));
-                }
-                catch (StringIndexOutOfBoundsException e){
+                } catch (StringIndexOutOfBoundsException e) {
                     PrintMsg(" ( ._. )\"\"You are missing the /by argument");
                     continue;
-                }
-                catch (IllegalArgumentException e){
+                } catch (IllegalArgumentException e) {
                     PrintMsg("Description is empty.");
                     continue;
                 }
                 numTask += 1;
                 FileManager.saveTasks(Tasks);
             } else if (words[0].equals("event")) {
-                try{
+                try {
                     Tasks.add(new Event(ln));
-                }
-                catch (IllegalArgumentException e){
+                } catch (IllegalArgumentException e) {
                     PrintMsg("Description is empty.");
                     continue;
-                }
-                catch (StringIndexOutOfBoundsException e){
+                } catch (StringIndexOutOfBoundsException e) {
                     PrintMsg(" ( ._. )\"\"Make sure you have /from and /to arguments");
                     continue;
                 }
