@@ -6,14 +6,14 @@ public class Event extends Task {
         super("", "E");
         int indexOfFrom = ln.indexOf("/from");
         int indexOfTo = ln.indexOf("/to");
-        description = ln.substring(6, indexOfFrom);
+        description = ln.substring(6, indexOfFrom).trim();
 
         if(description.equals("")){
             throw new IllegalArgumentException();
         }
 
-        from = ln.substring(indexOfFrom + 5, indexOfTo);
-        to = ln.substring(indexOfTo + 3);
+        from = ln.substring(indexOfFrom + 5, indexOfTo).trim();
+        to = ln.substring(indexOfTo + 3).trim();
 
         System.out.println("_________________________");
         System.out.println("Got it. I've added this task:" + this);
@@ -24,7 +24,7 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return super.toString() + "(from:" + from + "to: " + to + ")";
+        return super.toString() + "(from: " + from + ", to: " + to + ")";
     }
 
 
