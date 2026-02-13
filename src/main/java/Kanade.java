@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Kanade {
     Scanner sc = new Scanner(System.in);
-    private Task[] Tasks = new Task[100];
+    private ArrayList<Task> Tasks = new ArrayList<Task>();
     protected static Integer numTask;
 
     public Kanade() {
@@ -31,13 +32,22 @@ public class Kanade {
                 PrintTasks();
             } else if (words[0].equals("unmark")) {
                 target = Integer.parseInt(ln.replace("unmark ", ""));
-                Tasks[target].setStatus(false);
+                Tasks.get(target).setStatus(false);
             } else if (words[0].equals("mark")) {
                 target = Integer.parseInt(ln.replace("mark ", ""));
-                Tasks[target].setStatus(true);
+                Tasks.get(target).setStatus(true);
+            } else if (words[0].equals("delete")){
+                target = Integer.parseInt(ln.replace("delete ", ""));
+                if(target >= Tasks.size()){
+                    PrintMsg("Index out of bounds, please reenter.");
+                    continue;
+                }
+                PrintMsg("Sure, I've removed item " + target.toString());
+                Tasks.remove(target.intValue());
+
             } else if (words[0].equals("todo")) {
                 try{
-                    Tasks[numTask] = new Todo(ln);
+                    Tasks.add(new Todo(ln));
                 }
                 catch (StringIndexOutOfBoundsException e){
                     PrintMsg(" (•̀⤙•́ ) The description of a Todo cannot be empty, try again");
@@ -47,7 +57,7 @@ public class Kanade {
                 numTask += 1;
             } else if (words[0].equals("deadline")) {
                 try{
-                    Tasks[numTask] = new Deadline(ln);
+                    Tasks.add(new Deadline(ln));
                 }
                 catch (StringIndexOutOfBoundsException e){
                     PrintMsg(" ( ._. )\"\"You are missing the /by argument");
@@ -60,7 +70,7 @@ public class Kanade {
                 numTask += 1;
             } else if (words[0].equals("event")) {
                 try{
-                    Tasks[numTask] = new Event(ln);
+                    Tasks.add(new Event(ln));
                 }
                 catch (IllegalArgumentException e){
                     PrintMsg("Description is empty.");
@@ -82,8 +92,8 @@ public class Kanade {
     public void PrintTasks() {
         System.out.println("_________________________");
         Integer i = 0;
-        for (i = 0; i < numTask; i += 1) {
-            System.out.println(i.toString() + "." + Tasks[i].toString());
+        for (i = 0; i < Tasks.size(); i += 1) {
+            System.out.println(i.toString() + "." + Tasks.get(i).toString());
         }
         System.out.println("_________________________");
     }
