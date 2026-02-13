@@ -36,6 +36,15 @@ public class Kanade {
             } else if (words[0].equals("mark")) {
                 target = Integer.parseInt(ln.replace("mark ", ""));
                 Tasks.get(target).setStatus(true);
+            } else if (words[0].equals("delete")){
+                target = Integer.parseInt(ln.replace("delete ", ""));
+                if(target >= Tasks.size()){
+                    PrintMsg("Index out of bounds, please reenter.");
+                    continue;
+                }
+                PrintMsg("Sure, I've removed item " + target.toString());
+                Tasks.remove(target.intValue());
+
             } else if (words[0].equals("todo")) {
                 try{
                     Tasks.add(new Todo(ln));
@@ -83,7 +92,7 @@ public class Kanade {
     public void PrintTasks() {
         System.out.println("_________________________");
         Integer i = 0;
-        for (i = 0; i < numTask; i += 1) {
+        for (i = 0; i < Tasks.size(); i += 1) {
             System.out.println(i.toString() + "." + Tasks.get(i).toString());
         }
         System.out.println("_________________________");
