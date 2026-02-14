@@ -17,11 +17,13 @@ public class Kanade {
         System.out.println("Initiating...\n" + logo);
         this.PrintMsg("Ciallo～(∠・ω< )⌒★)! I'm Kanade!\n こんにちは！私の名前は奏（かなで）です！よろしくお願いします！");
         numTask = 0;
+        Tasks = FileManager.loadTasks();
+        numTask = Tasks.size();
     }
 
     public void Chat() {
         String ln = "";
-        Integer target;
+        int target;
         while (true) {
             ln = sc.nextLine();
             String[] words = ln.split(" ");
@@ -33,55 +35,57 @@ public class Kanade {
             } else if (words[0].equals("unmark")) {
                 target = Integer.parseInt(ln.replace("unmark ", ""));
                 Tasks.get(target).setStatus(false);
+                FileManager.saveTasks(Tasks);
             } else if (words[0].equals("mark")) {
                 target = Integer.parseInt(ln.replace("mark ", ""));
                 Tasks.get(target).setStatus(true);
-            } else if (words[0].equals("delete")){
+                FileManager.saveTasks(Tasks);
+            } else if (words[0].equals("delete")) {
                 target = Integer.parseInt(ln.replace("delete ", ""));
-                if(target >= Tasks.size()){
+                if (target >= Tasks.size()) {
                     PrintMsg("Index out of bounds, please reenter.");
                     continue;
                 }
-                PrintMsg("Sure, I've removed item " + target.toString());
-                Tasks.remove(target.intValue());
+                PrintMsg("Sure, I've removed item " + Integer.toString(target));
+                Tasks.remove(target);
+                numTask = Tasks.size();
+                FileManager.saveTasks(Tasks);
 
             } else if (words[0].equals("todo")) {
-                try{
+                try {
                     Tasks.add(new Todo(ln));
-                }
-                catch (StringIndexOutOfBoundsException e){
+                } catch (StringIndexOutOfBoundsException e) {
                     PrintMsg(" (•̀⤙•́ ) The description of a Todo cannot be empty, try again");
                     continue;
                 }
 
                 numTask += 1;
+                FileManager.saveTasks(Tasks);
             } else if (words[0].equals("deadline")) {
-                try{
+                try {
                     Tasks.add(new Deadline(ln));
-                }
-                catch (StringIndexOutOfBoundsException e){
+                } catch (StringIndexOutOfBoundsException e) {
                     PrintMsg(" ( ._. )\"\"You are missing the /by argument");
                     continue;
-                }
-                catch (IllegalArgumentException e){
+                } catch (IllegalArgumentException e) {
                     PrintMsg("Description is empty.");
                     continue;
                 }
                 numTask += 1;
+                FileManager.saveTasks(Tasks);
             } else if (words[0].equals("event")) {
-                try{
+                try {
                     Tasks.add(new Event(ln));
-                }
-                catch (IllegalArgumentException e){
+                } catch (IllegalArgumentException e) {
                     PrintMsg("Description is empty.");
                     continue;
-                }
-                catch (StringIndexOutOfBoundsException e){
+                } catch (StringIndexOutOfBoundsException e) {
                     PrintMsg(" ( ._. )\"\"Make sure you have /from and /to arguments");
                     continue;
                 }
 
                 numTask += 1;
+                FileManager.saveTasks(Tasks);
             } else {
                 PrintMsg("Sry I didn't understand (\"-ࡇ-)");
             }
