@@ -1,6 +1,9 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Event extends Task {
-    String from;
-    String to;
+    LocalDate from;
+    LocalDate to;
 
     public Event(String ln) {
         super("", "E");
@@ -12,8 +15,8 @@ public class Event extends Task {
             throw new IllegalArgumentException();
         }
 
-        from = ln.substring(indexOfFrom + 5, indexOfTo).trim();
-        to = ln.substring(indexOfTo + 3).trim();
+        from = LocalDate.parse(ln.substring(indexOfFrom + 5, indexOfTo).trim());
+        to = LocalDate.parse(ln.substring(indexOfTo + 3).trim());
 
         System.out.println("_________________________");
         System.out.println("Got it. I've added this task:" + this);
@@ -21,10 +24,13 @@ public class Event extends Task {
         System.out.println("Now you have " + numT.toString() + " task(s) in the list");
         System.out.println("_________________________");
     }
-
+    public String dateToString(LocalDate by){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+        return by.format(formatter);
+    }
     @Override
     public String toString() {
-        return super.toString() + "(from: " + from + ", to: " + to + ")";
+        return super.toString() + "(from: " + dateToString(from) + ", to: " + dateToString(to) + ")";
     }
 
 

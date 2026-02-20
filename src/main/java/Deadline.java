@@ -1,5 +1,8 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Deadline extends Task {
-    String by;
+    LocalDate by;
 
     public Deadline(String ln) {
         super("", "D");
@@ -14,7 +17,7 @@ public class Deadline extends Task {
 
         description = desc;
 
-        by = ln.substring(indexOfBy + 4);
+        by = LocalDate.parse(ln.substring(indexOfBy + 4));
 
         System.out.println("_________________________");
         System.out.println("Got it. I've added this task: " + this);
@@ -23,8 +26,13 @@ public class Deadline extends Task {
         System.out.println("_________________________");
     }
 
+    public String dateToString(LocalDate by){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+        return by.format(formatter);
+    }
+
     @Override
     public String toString() {
-        return super.toString() + "(by: " + by + ")";
+        return super.toString() + "(by: " + dateToString(by) + ")";
     }
 }

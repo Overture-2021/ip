@@ -281,10 +281,10 @@ public class FileManager {
         sb.append("\"description\":\"").append(jsonEscape(task.description)).append("\",");
         sb.append("\"isDone\":").append(task.isDone);
         if (task instanceof Deadline) {
-            sb.append(",\"by\":\"").append(jsonEscape(((Deadline) task).by)).append("\"");
+            sb.append(",\"by\":\"").append(jsonEscape(((Deadline) task).by.toString())).append("\"");
         } else if (task instanceof Event) {
-            sb.append(",\"from\":\"").append(jsonEscape(((Event) task).from)).append("\",");
-            sb.append("\"to\":\"").append(jsonEscape(((Event) task).to)).append("\"");
+            sb.append(",\"from\":\"").append(jsonEscape(((Event) task).from.toString())).append("\",");
+            sb.append("\"to\":\"").append(jsonEscape(((Event) task).to.toString())).append("\"");
         }
         sb.append("}");
         return sb.toString();
