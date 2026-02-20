@@ -20,7 +20,7 @@ public class Kanade {
         System.out.println("Initiating...\n" + logo);
         this.printMsg("Ciallo～(∠・ω< )⌒★)! I'm Kanade!");
         numTask = 0;
-        tasks = FileManager.loadTasks();
+        tasks = Storage.loadTasks();
         numTask = tasks.size();
     }
 
@@ -41,11 +41,11 @@ public class Kanade {
             } else if (words[0].equals("unmark")) {
                 target = Integer.parseInt(ln.replace("unmark ", ""));
                 tasks.get(target).setStatus(false);
-                FileManager.saveTasks(tasks);
+                Storage.saveTasks(tasks);
             } else if (words[0].equals("mark")) {
                 target = Integer.parseInt(ln.replace("mark ", ""));
                 tasks.get(target).setStatus(true);
-                FileManager.saveTasks(tasks);
+                Storage.saveTasks(tasks);
             } else if (words[0].equals("delete")) {
                 target = Integer.parseInt(ln.replace("delete ", ""));
                 if (target >= tasks.size()) {
@@ -55,7 +55,7 @@ public class Kanade {
                 printMsg("Sure, I've removed item " + Integer.toString(target));
                 tasks.remove(target);
                 numTask = tasks.size();
-                FileManager.saveTasks(tasks);
+                Storage.saveTasks(tasks);
 
             } else if (words[0].equals("todo")) {
                 try {
@@ -66,7 +66,7 @@ public class Kanade {
                 }
 
                 numTask += 1;
-                FileManager.saveTasks(tasks);
+                Storage.saveTasks(tasks);
             } else if (words[0].equals("deadline")) {
                 try {
                     tasks.add(new Deadline(ln));
@@ -78,7 +78,7 @@ public class Kanade {
                     continue;
                 }
                 numTask += 1;
-                FileManager.saveTasks(tasks);
+                Storage.saveTasks(tasks);
             } else if (words[0].equals("event")) {
                 try {
                     tasks.add(new Event(ln));
@@ -91,7 +91,7 @@ public class Kanade {
                 }
 
                 numTask += 1;
-                FileManager.saveTasks(tasks);
+                Storage.saveTasks(tasks);
             } else if (words[0].equals("find")){
                 System.out.println("_________________________");
                 for(int i=0;i<numTask;i+=1){

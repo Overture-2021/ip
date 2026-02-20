@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FileManager {
+public class Storage {
     private static final String TASKS_FILE = "tasks.json";
     private static final PrintStream NULL_PRINT_STREAM = new PrintStream(new OutputStream() {
         @Override
