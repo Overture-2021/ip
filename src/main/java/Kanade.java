@@ -86,6 +86,14 @@ public class Kanade {
 
                 numTask += 1;
                 FileManager.saveTasks(tasks);
+            } else if (words[0].equals("find")){
+                System.out.println("_________________________");
+                for(int i=0;i<numTask;i+=1){
+                    if(tasks.get(i).description.contains(words[1])){
+                        System.out.println(i + "." + tasks.get(i).toString());
+                    }
+                }
+                System.out.println("_________________________");
             } else {
                 printMsg("Sry I didn't understand (\"-ࡇ-)");
             }
