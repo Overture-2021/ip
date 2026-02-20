@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Kanade {
     Scanner sc = new Scanner(System.in);
-    private ArrayList<Task> Tasks = new ArrayList<Task>();
+    private ArrayList<Task> tasks = new ArrayList<Task>();
     protected static Integer numTask;
 
     public Kanade() {
@@ -15,10 +15,10 @@ public class Kanade {
                 + "|_|\\_\\\\__,_|_| |_|\\__,_|\\__,_|\\___|❤\n";
 
         System.out.println("Initiating...\n" + logo);
-        this.PrintMsg("Ciallo～(∠・ω< )⌒★)! I'm Kanade!\n こんにちは！私の名前は奏（かなで）です！よろしくお願いします！");
+        this.printMsg("Ciallo～(∠・ω< )⌒★)! I'm Kanade!");
         numTask = 0;
-        Tasks = FileManager.loadTasks();
-        numTask = Tasks.size();
+        tasks = FileManager.loadTasks();
+        numTask = tasks.size();
     }
 
     public void Chat() {
@@ -28,90 +28,90 @@ public class Kanade {
             ln = sc.nextLine();
             String[] words = ln.split(" ");
             if (ln.equals("bye")) {
-                PrintMsg("Bye. Hope to see you again soon!\nまたね！");
+                printMsg("Bye. Hope to see you again soon!");
                 break;
             } else if (ln.equals("list")) {
-                PrintTasks();
+                printTasks();
             } else if (words[0].equals("unmark")) {
                 target = Integer.parseInt(ln.replace("unmark ", ""));
-                Tasks.get(target).setStatus(false);
-                FileManager.saveTasks(Tasks);
+                tasks.get(target).setStatus(false);
+                FileManager.saveTasks(tasks);
             } else if (words[0].equals("mark")) {
                 target = Integer.parseInt(ln.replace("mark ", ""));
-                Tasks.get(target).setStatus(true);
-                FileManager.saveTasks(Tasks);
+                tasks.get(target).setStatus(true);
+                FileManager.saveTasks(tasks);
             } else if (words[0].equals("delete")) {
                 target = Integer.parseInt(ln.replace("delete ", ""));
-                if (target >= Tasks.size()) {
-                    PrintMsg("Index out of bounds, please reenter.");
+                if (target >= tasks.size()) {
+                    printMsg("Index out of bounds, please reenter.");
                     continue;
                 }
-                PrintMsg("Sure, I've removed item " + Integer.toString(target));
-                Tasks.remove(target);
-                numTask = Tasks.size();
-                FileManager.saveTasks(Tasks);
+                printMsg("Sure, I've removed item " + Integer.toString(target));
+                tasks.remove(target);
+                numTask = tasks.size();
+                FileManager.saveTasks(tasks);
 
             } else if (words[0].equals("todo")) {
                 try {
-                    Tasks.add(new Todo(ln));
+                    tasks.add(new Todo(ln));
                 } catch (StringIndexOutOfBoundsException e) {
-                    PrintMsg(" (•̀⤙•́ ) The description of a Todo cannot be empty, try again");
+                    printMsg(" (•̀⤙•́ ) The description of a Todo cannot be empty, try again");
                     continue;
                 }
 
                 numTask += 1;
-                FileManager.saveTasks(Tasks);
+                FileManager.saveTasks(tasks);
             } else if (words[0].equals("deadline")) {
                 try {
-                    Tasks.add(new Deadline(ln));
+                    tasks.add(new Deadline(ln));
                 } catch (StringIndexOutOfBoundsException e) {
-                    PrintMsg(" ( ._. )\"\"You are missing the /by argument");
+                    printMsg(" ( ._. )\"\"You are missing the /by argument");
                     continue;
                 } catch (IllegalArgumentException e) {
-                    PrintMsg("Description is empty.");
+                    printMsg("Description is empty.");
                     continue;
                 }
                 numTask += 1;
-                FileManager.saveTasks(Tasks);
+                FileManager.saveTasks(tasks);
             } else if (words[0].equals("event")) {
                 try {
-                    Tasks.add(new Event(ln));
+                    tasks.add(new Event(ln));
                 } catch (IllegalArgumentException e) {
-                    PrintMsg("Description is empty.");
+                    printMsg("Description is empty.");
                     continue;
                 } catch (StringIndexOutOfBoundsException e) {
-                    PrintMsg(" ( ._. )\"\"Make sure you have /from and /to arguments");
+                    printMsg(" ( ._. )\"\"Make sure you have /from and /to arguments");
                     continue;
                 }
 
                 numTask += 1;
-                FileManager.saveTasks(Tasks);
+                FileManager.saveTasks(tasks);
             } else {
-                PrintMsg("Sry I didn't understand (\"-ࡇ-)");
+                printMsg("Sry I didn't understand (\"-ࡇ-)");
             }
 
         }
     }
 
-    public void PrintTasks() {
+    public void printTasks() {
         System.out.println("_________________________");
         Integer i = 0;
-        for (i = 0; i < Tasks.size(); i += 1) {
-            System.out.println(i.toString() + "." + Tasks.get(i).toString());
+        for (i = 0; i < tasks.size(); i += 1) {
+            System.out.println(i.toString() + "." + tasks.get(i).toString());
         }
         System.out.println("_________________________");
     }
 
-    public static void PrintMsg(String input) {
+    public static void printMsg(String input) {
         System.out.println("_________________________");
         System.out.println(input);
         System.out.println("_________________________");
     }
 
     public static void main(String[] args) {
-        Kanade k423 = new Kanade();
+        Kanade kiana = new Kanade();
 
-        k423.Chat();
+        kiana.Chat();
 
     }
 }
