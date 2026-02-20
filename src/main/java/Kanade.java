@@ -8,15 +8,6 @@ public class Kanade {
      * Constructs a Kanade chatbot instance, prints the startup banner, and loads saved tasks.
      */
     public Kanade() {
-        String logo = " _  __                     _      \n"
-                + "| |/ /                    | |     \n"
-                + "| ' /  __ _ _ __   __ _  __| | ___ \n"
-                + "|  <  / _` | '_ \\ / _` |/ _` |/ _ \\\n"
-                + "| . \\| (_| | | | | (_| | (_| |  __/\n"
-                + "|_|\\_\\\\__,_|_| |_|\\__,_|\\__,_|\\___|❤\n";
-
-        System.out.println("Initiating...\n" + logo);
-        Ui.printMsg("Ciallo～(∠・ω< )⌒★)! I'm Kanade!");
         numTask = 0;
         tasks = Storage.loadTasks();
         numTask = tasks.size();
@@ -38,11 +29,7 @@ public class Kanade {
         System.out.println("_________________________");
     }
 
-    /**
-     * Prints a framed message line to standard output.
-     *
-     * @param input message text to print
-     */
+
 
 
     /**
