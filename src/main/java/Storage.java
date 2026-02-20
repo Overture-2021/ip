@@ -245,9 +245,9 @@ public class Storage {
             });
             return tasks;
         } catch (IOException e) {
-            Kanade.printMsg("Could not read " + TASKS_FILE + ". Starting with an empty list.");
+            Ui.printMsg("Could not read " + TASKS_FILE + ". Starting with an empty list.");
         } catch (RuntimeException e) {
-            Kanade.printMsg("Invalid " + TASKS_FILE + ". Starting with an empty list.");
+            Ui.printMsg("Invalid " + TASKS_FILE + ". Starting with an empty list.");
         }
         return new ArrayList<Task>();
     }
@@ -264,7 +264,7 @@ public class Storage {
             Files.write(path, json.getBytes(StandardCharsets.UTF_8),
                     StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
-            Kanade.printMsg("Could not save tasks to " + TASKS_FILE + ".");
+            Ui.printMsg("Could not save tasks to " + TASKS_FILE + ".");
         }
     }
 
