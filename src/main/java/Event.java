@@ -5,6 +5,11 @@ public class Event extends Task {
     LocalDate from;
     LocalDate to;
 
+    /**
+     * Creates an event task from a user command string.
+     *
+     * @param ln full input line containing description, /from date, and /to date
+     */
     public Event(String ln) {
         super("", "E");
         int indexOfFrom = ln.indexOf("/from");
@@ -24,10 +29,23 @@ public class Event extends Task {
         System.out.println("Now you have " + numT.toString() + " task(s) in the list");
         System.out.println("_________________________");
     }
+
+    /**
+     * Formats a date as a human-readable string.
+     *
+     * @param by date to format
+     * @return formatted date in the form "Month day, year"
+     */
     public String dateToString(LocalDate by){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
         return by.format(formatter);
     }
+
+    /**
+     * Returns the printable string representation of this event task.
+     *
+     * @return task string including from/to dates
+     */
     @Override
     public String toString() {
         return super.toString() + "(from: " + dateToString(from) + ", to: " + dateToString(to) + ")";

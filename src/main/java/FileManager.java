@@ -217,6 +217,11 @@ public class FileManager {
         }
     }
 
+    /**
+     * Loads tasks from the JSON storage file.
+     *
+     * @return list of tasks loaded from disk, or an empty list on failure
+     */
     public static ArrayList<Task> loadTasks() {
         Path path = Paths.get(TASKS_FILE);
         if (!Files.exists(path)) {
@@ -247,6 +252,11 @@ public class FileManager {
         return new ArrayList<Task>();
     }
 
+    /**
+     * Saves the provided tasks to the JSON storage file.
+     *
+     * @param tasks tasks to persist
+     */
     public static void saveTasks(List<Task> tasks) {
         Path path = Paths.get(TASKS_FILE);
         String json = serializeTasks(tasks);
