@@ -1,4 +1,9 @@
 public class Todo extends Task {
+    /**
+     * Creates a todo task from a user command string.
+     *
+     * @param ln full input line containing the todo description
+     */
     public Todo(String ln) {
         super("", "T");
 

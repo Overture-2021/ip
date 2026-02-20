@@ -6,6 +6,9 @@ public class Kanade {
     private ArrayList<Task> tasks = new ArrayList<Task>();
     protected static Integer numTask;
 
+    /**
+     * Constructs a Kanade chatbot instance, prints the startup banner, and loads saved tasks.
+     */
     public Kanade() {
         String logo = " _  __                     _      \n"
                 + "| |/ /                    | |     \n"
@@ -21,6 +24,9 @@ public class Kanade {
         numTask = tasks.size();
     }
 
+    /**
+     * Starts the interactive chat loop and handles supported user commands until exit.
+     */
     public void Chat() {
         String ln = "";
         int target;
@@ -101,6 +107,9 @@ public class Kanade {
         }
     }
 
+    /**
+     * Prints all tasks currently in memory with their list indexes.
+     */
     public void printTasks() {
         System.out.println("_________________________");
         Integer i = 0;
@@ -110,12 +119,22 @@ public class Kanade {
         System.out.println("_________________________");
     }
 
+    /**
+     * Prints a framed message line to standard output.
+     *
+     * @param input message text to print
+     */
     public static void printMsg(String input) {
         System.out.println("_________________________");
         System.out.println(input);
         System.out.println("_________________________");
     }
 
+    /**
+     * Application entry point.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         Kanade kiana = new Kanade();
 
