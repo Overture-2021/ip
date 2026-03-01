@@ -5,7 +5,7 @@ Kanade is a lightweight command-line task tracker. It supports todos, deadlines,
 ## Quick start
 
 1. Ensure JDK 17 is installed.
-2. Run `Kanade.main()` from `src/main/java/Kanade.java` in your IDE.
+2. Run `Kanade.main()` from `src/main/java/Kanade.java` in your IDE, or use the Jar file.
 3. Type commands in the terminal that appears.
 
 Notes:
