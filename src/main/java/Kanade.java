@@ -13,6 +13,11 @@ public class Kanade {
         numTask = tasks.size();
     }
 
+    /**
+     * Returns the mutable task list currently managed by this chatbot instance.
+     *
+     * @return in-memory task list
+     */
     public ArrayList<Task> getTasks() {
         return tasks;
     }

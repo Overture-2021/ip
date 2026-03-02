@@ -5,6 +5,12 @@ public class Ui {
     private final Scanner sc = new Scanner(System.in);
     private final Kanade kanade;
     private Parser parser;
+
+    /**
+     * Creates the console UI, prints the startup banner, and initializes command parsing.
+     *
+     * @param kanade chatbot instance used by this UI
+     */
     public Ui(Kanade kanade) {
         String logo = " _  __                     _      \n"
                 + "| |/ /                    | |     \n"
@@ -28,6 +34,10 @@ public class Ui {
         System.out.println(input);
         System.out.println("_________________________");
     }
+
+    /**
+     * Starts the main input loop and continues until an exit command is received.
+     */
     public void Chat() {
         String ln = "";
         boolean shouldExit = false;

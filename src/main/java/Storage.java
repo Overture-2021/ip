@@ -14,6 +14,11 @@ import java.util.Map;
 public class Storage {
     private static final String TASKS_FILE = "tasks.json";
     private static final PrintStream NULL_PRINT_STREAM = new PrintStream(new OutputStream() {
+        /**
+         * Discards all bytes written while output is temporarily suppressed.
+         *
+         * @param b ignored byte value
+         */
         @Override
         public void write(int b) {
         }
@@ -233,6 +238,9 @@ public class Storage {
             ArrayList<TaskRecord> records = parseTaskRecords(json);
             ArrayList<Task> tasks = new ArrayList<Task>();
             suppressOutput(new Runnable() {
+                /**
+                 * Recreates task objects from parsed records while console output is muted.
+                 */
                 @Override
                 public void run() {
                     for (TaskRecord record : records) {
