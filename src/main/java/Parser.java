@@ -3,11 +3,23 @@ import java.util.ArrayList;
 public class Parser {
     private Kanade kanade;
     ArrayList<Task> tasks;
+
+    /**
+     * Creates a parser bound to a chatbot instance and its task list.
+     *
+     * @param kanade chatbot instance that owns the tasks
+     */
     public Parser(Kanade kanade){
         this.kanade = kanade;
         tasks = kanade.getTasks();
     }
 
+    /**
+     * Parses and executes a single user command.
+     *
+     * @param ln user input line
+     * @return {@code true} when the command requests program termination, otherwise {@code false}
+     */
     public boolean parse(String ln){
         int target;
         String[] words = ln.split(" ");
