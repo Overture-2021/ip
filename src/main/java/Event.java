@@ -48,7 +48,7 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return super.toString() + "(from: " + dateToString(from) + ", to: " + dateToString(to) + ")";
+        return super.toString() + " (from: " + dateToString(from) + ", to: " + dateToString(to) + ")";
     }
 
 

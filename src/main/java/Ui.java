@@ -11,10 +11,10 @@ public class Ui {
                 + "| ' /  __ _ _ __   __ _  __| | ___ \n"
                 + "|  <  / _` | '_ \\ / _` |/ _` |/ _ \\\n"
                 + "| . \\| (_| | | | | (_| | (_| |  __/\n"
-                + "|_|\\_\\\\__,_|_| |_|\\__,_|\\__,_|\\___|❤\n";
+                + "|_|\\_\\\\__,_|_| |_|\\__,_|\\__,_|\\___|\n";
 
         System.out.println("Initiating...\n" + logo);
-        Ui.printMsg("Ciallo～(∠・ω< )⌒★)! I'm Kanade!");
+        Ui.printMsg("Ciallo～! I'm Kanade!");
         this.kanade = kanade;
         parser = new Parser(kanade);
     }
