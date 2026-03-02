@@ -5,7 +5,7 @@ public class Kanade {
     protected static Integer numTask;
 
     /**
-     * Constructs a Kanade chatbot instance, prints the startup banner, and loads saved tasks.
+     * Constructs a Kanade chatbot instance, prints the startup banner, and loads saved tasks from json file.
      */
     public Kanade() {
         numTask = 0;
