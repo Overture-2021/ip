@@ -19,7 +19,7 @@ public class Ui {
         parser = new Parser(kanade);
     }
     /**
-     * Prints a framed message line to standard output.
+     * Prints a framed message line to the output with concise interfaces.
      *
      * @param input message text to print
      */
