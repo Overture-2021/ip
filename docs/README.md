@@ -35,7 +35,7 @@ Example: `list`
 ```
 _________________________
 0.[T][ ] read book
-1.[D][X] submit report(by: March 1, 2026)
+1.[D][X] submit report (by: March 1, 2026)
 _________________________
 ```
 
@@ -60,7 +60,7 @@ Example: `deadline submit report /by 2026-03-01`
 
 ```
 _________________________
-Got it. I've added this task: [D][ ] submit report(by: March 1, 2026)
+Got it. I've added this task: [D][ ] submit report (by: March 1, 2026)
 Now you have 2 task(s) in the list
 _________________________
 ```
@@ -73,7 +73,7 @@ Example: `event training /from 2026-03-10 /to 2026-03-12`
 
 ```
 _________________________
-Got it. I've added this task:[E][ ] training(from: March 10, 2026, to: March 12, 2026)
+Got it. I've added this task:[E][ ] training (from: March 10, 2026, to: March 12, 2026)
 Now you have 3 task(s) in the list
 _________________________
 ```
@@ -120,7 +120,7 @@ Example: `find report`
 
 ```
 _________________________
-1.[D][ ] submit report(by: March 1, 2026)
+1.[D][ ] submit report (by: March 1, 2026)
 _________________________
 ```
 
